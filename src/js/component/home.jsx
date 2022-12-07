@@ -18,10 +18,17 @@ const Home = () => {
 
 	if(!search){
 		listCharacter=characters
+		document.body.classList.remove("not-found")
 	}else{
 		listCharacter = characters.filter((e)=>
 			e.name.toLowerCase().includes(search.toLocaleLowerCase())
 		)
+		if(listCharacter.length==0){
+			document.body.classList.add("not-found")
+		}else{
+			document.body.classList.remove("not-found")
+		}
+
 	}
 
     useEffect(()=>{
